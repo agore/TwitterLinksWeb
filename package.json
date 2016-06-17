@@ -4,5 +4,9 @@
     "dependencies" : {
         "express" : "~4.0.0",
         "pug" : "~2.0.0-beta3"
-    }
+    },
+    "engines" : {
+        "node" : "5.9.1"
+    },
+    "main" : "server.js"
 }

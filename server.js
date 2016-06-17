@@ -3,19 +3,8 @@ var app = express();
 var pug = require('pug');
 var https = require("https");
 
+app.set("port", (process.env.PORT || 3000));
 app.set("view engine", "pug");
-var options = {
-    hostname : "fierce-river-4730.herokuapp.com",
-    port : 443,
-    path : "/tweets/all?count=5"
-}
-
-/*
-var tweets = [
-    {"t" : "test 1"}, {"t" : "test 2"}
-];
-*/
-
 app.get("/", function(request, response) {
     https.get("https://fierce-river-4730.herokuapp.com/tweets/all", function(res) {
         var responseString = "";
@@ -32,6 +21,8 @@ app.get("/", function(request, response) {
     }).end();
 });
 
-var server = app.listen(3000, function() {
-    console.log("Server running on port 3000");
+
+var server = app.listen(app.get("port"), function() {
+    console.log("Server running on port ", app.get("port"));
 });
+

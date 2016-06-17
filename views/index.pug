@@ -5,12 +5,14 @@ html
             include style.css
     body
         each t in tweets
-            div.tweet
+            div(class=t.read ? "tweet read" : "tweet")
                 img(class="avatar", src=t.au, alt=t.name) 
                 div.byline 
                     span.name 
                         =t.name
                     span.handle @#{t.sn}
+                div.timestamp
+                    =t.ts
                 div.text
                     =t.t
                 ul.links

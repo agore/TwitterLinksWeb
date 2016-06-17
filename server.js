@@ -2,6 +2,7 @@ var express = require("express");
 var app = express();
 var pug = require('pug');
 var https = require("https");
+var df = require("dateformat");
 
 app.set("port", (process.env.PORT || 3000));
 app.set("view engine", "pug");
@@ -16,7 +17,12 @@ app.get("/", function(request, response) {
         res.on("end", function() {
  //           process.stdout.write(responseString);
 //            response.status(200).json(JSON.parse(responseString));
-            response.render("index", {tweets: JSON.parse(responseString)});
+            var tweets = JSON.parse(responseString);
+            tweets.forEach(function(item) {
+                item.ts = df(item.ts, "mm/dd/yyyy h:MM TT");
+            });
+//            console.log(tweets);
+            response.render("index", {tweets: tweets});
         });
     }).end();
 });

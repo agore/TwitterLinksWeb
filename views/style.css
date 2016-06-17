@@ -1,9 +1,10 @@
 body {max-width :900px; margin: 0 auto;}
 ul {list-style-type : none; padding: 0}
-.tweet {padding: 16px; background-color: #f9f9f9; margin-bottom: 8}
+.tweet {padding: 16px; background-color: #f9f9f9; margin-bottom: 8px}
 .tweet .avatar {float: right; border-radius: 50%}
-.byline {color: #999999; font-size: 12pt;}
-.byline .handle {font-style: italic; margin: 0 0 0 16px}
-.text {margin-top: 16; font-size: 14pt}
-.link a {font-size: 10pt; color: #03a9f4; text-decoration: none}
-
+.tweet .byline {color: #999999; font-size: 12pt;}
+.tweet .byline .handle {font-style: italic; margin: 0 0 0 16px}
+.tweet .text {margin-top: 16; font-size: 14pt}
+.tweet .link a {font-size: 10pt; color: #03a9f4; text-decoration: none}
+.tweet .timestamp {font-size: 8pt;color: #999999; margin-top: 8px}
+.read {background-color: #f0f8ff}

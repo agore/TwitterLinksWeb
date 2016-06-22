@@ -3,6 +3,8 @@ html
         title Tweets
         style
             include style.css
+        // script(src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js")
+        // script(src="/js/script.js")
     body
         each t in tweets
             div(class=t.read ? "tweet read" : "tweet")
@@ -18,5 +20,5 @@ html
                 ul.links
                     each l in t.urls
                         li.link
-                            a(href=l) 
+                            a(href=l, target="_new", data-tweet-id=t.id) 
                                 =l

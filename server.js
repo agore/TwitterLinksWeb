@@ -2,11 +2,14 @@ var express = require("express");
 var app = express();
 var pug = require('pug');
 var https = require("https");
-var df = require("dateformat");
+//var http = require("http");
+var momentTz = require("moment-timezone");
 
 app.set("port", (process.env.PORT || 3000));
 app.set("view engine", "pug");
+app.use("/js", express.static( __dirname + '/views/js'));
 app.get("/", function(request, response) {
+    //http.get("http://localhost:5000/tweets/all", function(res) {
     https.get("https://fierce-river-4730.herokuapp.com/tweets/all", function(res) {
         var responseString = "";
         res.on("data", function(d) {
@@ -19,7 +22,7 @@ app.get("/", function(request, response) {
 //            response.status(200).json(JSON.parse(responseString));
             var tweets = JSON.parse(responseString);
             tweets.forEach(function(item) {
-                item.ts = df(item.ts, "mm/dd/yyyy h:MM TT");
+                item.ts = momentTz.tz(item.ts, "America/New_York").format("MM/DD/YYYY hh:mm a")
             });
 //            console.log(tweets);
             response.render("index", {tweets: tweets});

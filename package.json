@@ -4,7 +4,8 @@
     "dependencies" : {
         "express" : "~4.0.0",
         "pug" : "~2.0.0-beta3",
-        "dateformat" : "~1.0.12"
+        "dateformat" : "~1.0.12",
+        "moment-timezone" : "2.13.0"
     },
     "engines" : {
         "node" : "5.9.1"

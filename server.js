@@ -5,6 +5,7 @@ var https = require("https");
 //var http = require("http");
 var momentTz = require("moment-timezone");
 var urlParser = require("url");
+var parser = require("json-bigint");
 
 app.set("port", (process.env.PORT || 3000));
 app.set("view engine", "pug");
@@ -21,11 +22,11 @@ app.get("/", function(request, response) {
         res.on("end", function() {
  //           process.stdout.write(responseString);
 //            response.status(200).json(JSON.parse(responseString));
-            var tweets = JSON.parse(responseString);
+            var tweets = parser.parse(responseString);
             tweets.forEach(function(item) {
                 item.ts = momentTz.tz(item.ts, "America/New_York").format("MM/DD/YYYY hh:mm a")
             });
-//            console.log(tweets);
+            console.log(tweets);
             response.render("index", {tweets: tweets});
         });
     }).end();

@@ -8,3 +8,9 @@ ul {list-style-type : none; padding: 0}
 .tweet .link a {font-size: 10pt; color: #03a9f4; text-decoration: none}
 .tweet .timestamp {font-size: 8pt;color: #999999; margin-top: 8px}
 .read {background-color: #f0f8ff}
+ul.links {display: inline-block; width: 70%}
+.shareTools .twitter {background: url("/images/twitter.png") center no-repeat; height: 40px; width: 40px;  display: block;}
+/*
+.shareTools .tooltip {visibility: hidden; display: inline-block; padding: 5px 0; width: 120px; background: #12312345}
+.shareTools .twitter:hover .tooltip {visibility: visible;}
+*/

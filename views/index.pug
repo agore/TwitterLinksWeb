@@ -7,7 +7,7 @@ html
         script(src="/js/script.js")
     body
         each t in tweets
-            div(class=t.read ? "tweet read" : "tweet", data-tweet-id=t.id)
+            div(class=t.read ? "tweet read" : "tweet", data-tweet-id=t.id.toString())
                 img(class="avatar", src=t.au, alt=t.name) 
                 div.byline 
                     span.name 
@@ -20,6 +20,8 @@ html
                 ul.links
                     each l in t.urls
                         li.link
-                            a(class="tweetLink", href=l, target="_new", data-tweet-id=t.id) 
+                            a(class="tweetLink", href=l, target="_new", data-tweet-id=t.id.toString()) 
                                 =l
+                div.shareTools
+                    a.twitter(href="https://twitter.com/" + t.sn + "/status/" + t.id.toString(), target="_new")
         a.loadMore More

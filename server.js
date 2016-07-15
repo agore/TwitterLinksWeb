@@ -10,6 +10,7 @@ var parser = require("json-bigint");
 app.set("port", (process.env.PORT || 3000));
 app.set("view engine", "pug");
 app.use("/js", express.static( __dirname + '/views/js'));
+app.use("/images", express.static( __dirname + '/views/images'));
 app.get("/", function(request, response) {
     //http.get("http://localhost:5000/tweets/all", function(res) {
     https.get("https://fierce-river-4730.herokuapp.com/tweets/all?count=50", function(res) {
@@ -26,7 +27,7 @@ app.get("/", function(request, response) {
             tweets.forEach(function(item) {
                 item.ts = momentTz.tz(item.ts, "America/New_York").format("MM/DD/YYYY hh:mm a")
             });
-            console.log(tweets);
+            //console.log(tweets);
             response.render("index", {tweets: tweets});
         });
     }).end();
